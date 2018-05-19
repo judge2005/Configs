@@ -20,7 +20,7 @@
 	IntConfigItem digits_on("digits_on", 500);
 	ByteConfigItem display_on("display_on", 6);
 	ByteConfigItem display_off("display_off", 22);
-	StringConfigItem time_url("time_url", 80, String("http://time.niobo.us/getTime/America/New_York"));
+	StringConfigItem time_url("time_url", 80, String("http://time.nixies.us/getTime/America/New_York"));
 
 	// LED config values
 	ByteConfigItem hue("hue", 100);
