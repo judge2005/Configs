@@ -10,14 +10,12 @@
 #include <ConfigItem.h>
 
 	// Clock config values
-	BooleanConfigItem time_or_date("time_or_date", true);
-	ByteConfigItem date_format("date_format", 1);
-	BooleanConfigItem time_format("time_format", false);
-	BooleanConfigItem hour_format("hour_format", false);
+	BooleanConfigItem time_or_date("time_or_date", true);	// time
+	ByteConfigItem date_format("date_format", 1);			// mm-dd-yy, dd-mm-yy, yy-mm-dd
+	BooleanConfigItem hour_format("hour_format", false);	// 12/24 hour
+	BooleanConfigItem leading_zero("leading_zero", true);	//
 	ByteConfigItem fading("fading", 1);
-	ByteConfigItem indicator("indicator", 1);
-	BooleanConfigItem scrollback("scrollback", true);
-	IntConfigItem digits_on("digits_on", 1500);
+	ByteConfigItem colons("colons", 1);					// off, on, flashing, AM/PM
 	ByteConfigItem display_on("display_on", 6);
 	ByteConfigItem display_off("display_off", 22);
 	StringConfigItem time_url("time_url", 80, String("http://time.nixies.us/getTime/America/New_York"));
@@ -25,35 +23,31 @@
 	// LED config values
 	ByteConfigItem hue("hue", 0);
 	ByteConfigItem saturation("saturation", 215);
-	BooleanConfigItem backlight("backlight", true);
+	BooleanConfigItem backlight("backlight", false);
+	BooleanConfigItem underlight("underlight", false);
 	BooleanConfigItem hue_cycling("hue_cycling", true);
 	ByteConfigItem led_scale("led_scale", 127);
 	IntConfigItem cycle_time("cycle_time", 120);
 
 	// Extra config values
-	BooleanConfigItem dimming("dimming", true);
+	ByteConfigItem show_date("show_date", 1);	// 1 = show date every minute
+	ByteConfigItem out_effect("out_effect", 1);	// 1 = slide display to the left
+	ByteConfigItem in_effect("in_effect", 1);	// 1 = slide display to the left
 	BooleanConfigItem display("display", true);	// true == clock
+	IntConfigItem test("test", 0);
+	ByteConfigItem test_speed("test_speed", 60);	// ticks per minute 0 to 60
+	IntConfigItem reset_time("reset_time", 2800);	// Length of reset pulse in uS
+	IntConfigItem set_time("set_time", 120);	// Length of set pulse in uS
 	BooleanConfigItem hv("hv", true);
-	ByteConfigItem voltage("voltage", 176);
-	IntConfigItem digit("digit", 0);
-	ByteConfigItem count_speed("count_speed", 60);	// ticks per minute 0 to 60
-
-	// UPS config values
-	ByteConfigItem charge_rate("charge_rate", 0);	// 0 = Auto
-	BooleanConfigItem lpm("lpm", true);	// Low power mode - sleep when on battery
-	ByteConfigItem wakeup_time("wakeup_time", 25);	// How long to stay on during lpm
-	ByteConfigItem sensitivity("sensitivity", 40);	// Tap-detection sensitivity
 
 	BaseConfigItem *clockSet[] = {
 		// Clock
 		&time_or_date,
 		&date_format,
-		&time_format,
 		&hour_format,
+		&leading_zero,
 		&fading,
-		&indicator,
-		&scrollback,
-		&digits_on,
+		&colons,
 		&display_on,
 		&display_off,
 		&time_url,
@@ -67,45 +61,36 @@
 		&saturation,
 		&led_scale,
 		&backlight,
+		&underlight,
 		&hue_cycling,
 		0
 	};
 
 	BaseConfigItem *extraSet[] = {
 		// Extra
-		&dimming,
+		&show_date,
+		&out_effect,
+		&in_effect,
 		&display,
+		&test,
+		&test_speed,
+		&reset_time,
+		&set_time,
 		&hv,
-		&voltage,
-		&digit,
-		&count_speed,
 		0
-	};
-
-	BaseConfigItem *upsSet[] = {
-		// UPS
-		&charge_rate,
-		&lpm,
-		&wakeup_time,
-		&sensitivity
 	};
 
 	CompositeConfigItem clockConfig("clock", 0, clockSet);
 	CompositeConfigItem ledConfig("leds", 0, ledSet);
 	CompositeConfigItem extraConfig("extra", 0, extraSet);
-	CompositeConfigItem upsConfig("ups", 0, upsSet);
 
 	BaseConfigItem *configSet[] = {
 		&clockConfig,
 		&ledConfig,
 		&extraConfig,
-		&upsConfig,
 		0
 	};
 
 	CompositeConfigItem config("set1", 0, configSet);
-
-
-
 
 #endif /* LIBRARIES_CONFIGS_CONFIGSET1_H_ */

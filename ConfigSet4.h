@@ -16,6 +16,7 @@
 	BooleanConfigItem time_format("time_format", false);
 	BooleanConfigItem hour_format("hour_format", false);
 	ByteConfigItem fading("fading", 3);
+	ByteConfigItem indicator("indicator", 0);
 	BooleanConfigItem scrollback("scrollback", true);
 	IntConfigItem digits_on("digits_on", 1500);
 	ByteConfigItem display_on("display_on", 6);
@@ -51,6 +52,7 @@
 		&time_format,
 		&hour_format,
 		&fading,
+		&indicator,
 		&scrollback,
 		&digits_on,
 		&display_on,
