@@ -38,12 +38,17 @@
 	ByteConfigItem voltage("voltage", 176);
 	IntConfigItem digit("digit", 0);
 	ByteConfigItem count_speed("count_speed", 60);	// ticks per minute 0 to 60
+	StringConfigItem pin_order("pin_order", 13, "0123456789ab");
 
 	// UPS config values
 	ByteConfigItem charge_rate("charge_rate", 0);	// 0 = Auto
 	BooleanConfigItem lpm("lpm", false);	// Low power mode - sleep when on battery
 	ByteConfigItem wakeup_time("wakeup_time", 25);	// How long to stay on during lpm
 	ByteConfigItem sensitivity("sensitivity", 40);	// Tap-detection sensitivity
+
+	// Sync config values
+	IntConfigItem sync_port("sync_port", 4920);
+	ByteConfigItem sync_role("sync_role", 0);	// 0 = none, 1 = master, 2 = slave
 
 	BaseConfigItem *clockSet[] = {
 		// Clock
@@ -80,6 +85,7 @@
 		&voltage,
 		&digit,
 		&count_speed,
+		&pin_order,
 		0
 	};
 
@@ -91,10 +97,17 @@
 		&sensitivity
 	};
 
+	BaseConfigItem *syncSet[] = {
+		// Sync
+		&sync_port,
+		&sync_role
+	};
+
 	CompositeConfigItem clockConfig("clock", 0, clockSet);
 	CompositeConfigItem ledConfig("leds", 0, ledSet);
 	CompositeConfigItem extraConfig("extra", 0, extraSet);
 	CompositeConfigItem upsConfig("ups", 0, upsSet);
+	CompositeConfigItem syncConfig("sync", 0, syncSet);
 
 	BaseConfigItem *configSet[] = {
 		// Clock
@@ -102,6 +115,7 @@
 		&ledConfig,
 		&extraConfig,
 		&upsConfig,
+		&syncConfig,
 		0
 	};
 
