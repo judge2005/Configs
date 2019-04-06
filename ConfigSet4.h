@@ -39,6 +39,8 @@
 	IntConfigItem digit("digit", 0);
 	ByteConfigItem count_speed("count_speed", 1);	// ticks per minute 0 to 60
 	StringConfigItem pin_order("pin_order", 13, "0123456789ab");
+	IntConfigItem pwm_freq("pwm_freq", 8000);
+	ByteConfigItem mov_delay("mov_delay", 0);
 
 	// UPS config values
 	ByteConfigItem charge_rate("charge_rate", 0);	// 0 = Auto
@@ -86,6 +88,8 @@
 		&digit,
 		&count_speed,
 		&pin_order,
+		&pwm_freq,
+		&mov_delay,
 		0
 	};
 

@@ -39,6 +39,7 @@
 	IntConfigItem reset_time("reset_time", 2800);	// Length of reset pulse in uS
 	IntConfigItem set_time("set_time", 120);	// Length of set pulse in uS
 	BooleanConfigItem hv("hv", true);
+	ByteConfigItem mov_delay("mov_delay", 0);
 
 	// Alexa config values
 	StringConfigItem date_name("date_name", 20, String("date"));
@@ -86,6 +87,7 @@
 		&reset_time,
 		&set_time,
 		&hv,
+		&mov_delay,
 		0
 	};
 
