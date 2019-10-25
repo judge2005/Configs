@@ -41,6 +41,7 @@
 	StringConfigItem pin_order("pin_order", 13, "0123456789ab");
 	IntConfigItem pwm_freq("pwm_freq", 8000);
 	ByteConfigItem mov_delay("mov_delay", 0);
+	ByteConfigItem mov_src("mov_src", 0);
 
 	// UPS config values
 	ByteConfigItem charge_rate("charge_rate", 0);	// 0 = Auto
@@ -90,6 +91,7 @@
 		&pin_order,
 		&pwm_freq,
 		&mov_delay,
+		&mov_src,
 		0
 	};
 
