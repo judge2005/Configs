@@ -18,7 +18,8 @@
 	ByteConfigItem colons("colons", 3);					// off, on , flashing, AM/PM
 	ByteConfigItem display_on("display_on", 6);
 	ByteConfigItem display_off("display_off", 22);
-	StringConfigItem time_url("time_url", 80, String("http://time.nixies.us/getTime/America/New_York"));
+	StringConfigItem time_url("time_url", 80, String("EST5EDT,M3.2.0,M11.1.0"));
+	StringConfigItem time_url2("time_url2", 80, String("GMT0BST,M3.5.0/1,M10.5.0"));
 
 	// LED config values
 	ByteConfigItem hue("hue", 0);
@@ -27,8 +28,10 @@
 	BooleanConfigItem underlight("underlight", false);
 	BooleanConfigItem hue_cycling("hue_cycling", true);
 	ByteConfigItem led_scale("led_scale", 127);
-	ByteConfigItem underlight_scale("underlight_scale", 127);
 	IntConfigItem cycle_time("cycle_time", 120);
+	BooleanConfigItem sec_hue("sec_hue", false);
+	BooleanConfigItem sec_sat("sec_sat", false);
+	BooleanConfigItem sec_val("sec_val", false);
 
 	// Extra config values
 	BooleanConfigItem dimming("dimming", true);
@@ -38,6 +41,7 @@
 	BooleanConfigItem display("display", true);	// true == clock
 	ByteConfigItem test_speed("test_speed", 60);	// ticks per minute 0 to 60
 	BooleanConfigItem hv("hv", true);
+	ByteConfigItem voltage("voltage", 176);
 	ByteConfigItem mov_delay("mov_delay", 0);
 	ByteConfigItem mov_src("mov_src", 0);
 
@@ -71,6 +75,7 @@
 		&display_on,
 		&display_off,
 		&time_url,
+		&time_url2,
 		0
 	};
 
@@ -80,10 +85,12 @@
 		&hue,
 		&saturation,
 		&led_scale,
-		&underlight_scale,
 		&backlight,
 		&underlight,
 		&hue_cycling,
+		&sec_hue,
+		&sec_sat,
+		&sec_val,
 		0
 	};
 
@@ -96,6 +103,7 @@
 		&display,
 		&test_speed,
 		&hv,
+		&voltage,
 		&mov_delay,
 		&mov_src,
 		0

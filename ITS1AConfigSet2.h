@@ -18,7 +18,7 @@
 	ByteConfigItem colons("colons", 3);					// off, on , flashing, AM/PM
 	ByteConfigItem display_on("display_on", 6);
 	ByteConfigItem display_off("display_off", 22);
-	StringConfigItem time_url("time_url", 80, String("http://time.nixies.us/getTime/America/New_York"));
+	StringConfigItem time_url("time_url", 80, String("EST5EDT,M3.2.0,M11.1.0"));
 
 	// LED config values
 	ByteConfigItem hue("hue", 0);
@@ -41,6 +41,11 @@
 	IntConfigItem set_time("set_time", 120);	// Length of set pulse in uS
 	BooleanConfigItem hv("hv", true);
 	ByteConfigItem mov_delay("mov_delay", 0);
+	ByteConfigItem mov_src("mov_src", 0);
+
+	// Sync config values
+	IntConfigItem sync_port("sync_port", 4920);
+	ByteConfigItem sync_role("sync_role", 0);	// 0 = none, 1 = master, 2 = slave
 
 	BaseConfigItem *clockSet[] = {
 		// Clock
@@ -81,17 +86,27 @@
 		&set_time,
 		&hv,
 		&mov_delay,
+		&mov_src,
+		0
+	};
+
+	BaseConfigItem *syncSet[] = {
+		// Sync
+		&sync_port,
+		&sync_role,
 		0
 	};
 
 	CompositeConfigItem clockConfig("clock", 0, clockSet);
 	CompositeConfigItem ledConfig("leds", 0, ledSet);
 	CompositeConfigItem extraConfig("extra", 0, extraSet);
+	CompositeConfigItem syncConfig("sync", 0, syncSet);
 
 	BaseConfigItem *configSet[] = {
 		&clockConfig,
 		&ledConfig,
 		&extraConfig,
+		&syncConfig,
 		0
 	};
 

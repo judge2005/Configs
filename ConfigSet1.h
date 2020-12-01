@@ -29,6 +29,9 @@
 	BooleanConfigItem hue_cycling("hue_cycling", true);
 	ByteConfigItem led_scale("led_scale", 127);
 	IntConfigItem cycle_time("cycle_time", 120);
+	BooleanConfigItem sec_hue("sec_hue", false);
+	BooleanConfigItem sec_sat("sec_sat", false);
+	BooleanConfigItem sec_val("sec_val", false);
 
 	// Extra config values
 	BooleanConfigItem dimming("dimming", true);
@@ -76,6 +79,9 @@
 		&led_scale,
 		&backlight,
 		&hue_cycling,
+		&sec_hue,
+		&sec_sat,
+		&sec_val,
 		0
 	};
 
@@ -99,13 +105,15 @@
 		&charge_rate,
 		&lpm,
 		&wakeup_time,
-		&sensitivity
+		&sensitivity,
+		0
 	};
 
 	BaseConfigItem *syncSet[] = {
 		// Sync
 		&sync_port,
-		&sync_role
+		&sync_role,
+		0
 	};
 
 	CompositeConfigItem clockConfig("clock", 0, clockSet);

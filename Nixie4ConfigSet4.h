@@ -5,8 +5,8 @@
  *      Author: mpand
  */
 
-#ifndef LIBRARIES_CONFIGS_CONFIGSET1_H_
-#define LIBRARIES_CONFIGS_CONFIGSET1_H_
+#ifndef LIBRARIES_CONFIGS_CONFIGSET4_H_
+#define LIBRARIES_CONFIGS_CONFIGSET4_H_
 #include <ConfigItem.h>
 
 	// Clock config values
@@ -14,34 +14,42 @@
 	ByteConfigItem date_format("date_format", 1);			// mm-dd-yy, dd-mm-yy, yy-mm-dd
 	BooleanConfigItem hour_format("hour_format", false);	// 12/24 hour
 	BooleanConfigItem leading_zero("leading_zero", true);	//
-	ByteConfigItem fading("fading", 1);
-	ByteConfigItem colons("colons", 1);					// off, on, flashing, AM/PM
+	ByteConfigItem fading("fading", 0);
+	ByteConfigItem colons("colons", 1);					// flashing, on , off
 	ByteConfigItem display_on("display_on", 6);
 	ByteConfigItem display_off("display_off", 22);
-	StringConfigItem time_url("time_url", 80, String("EST5EDT,M3.2.0,M11.1.0"));
+	StringConfigItem time_url("time_url", 80, String("http://time.nixies.us/getTime/America/New_York"));
 
 	// LED config values
 	ByteConfigItem hue("hue", 0);
 	ByteConfigItem saturation("saturation", 215);
-	BooleanConfigItem backlight("backlight", false);
-	BooleanConfigItem underlight("underlight", false);
+	BooleanConfigItem backlight("backlight", true);
+	BooleanConfigItem seconds("seconds", true);
 	BooleanConfigItem hue_cycling("hue_cycling", true);
-	ByteConfigItem led_scale("led_scale", 127);
-	ByteConfigItem underlight_scale("underlight_scale", 127);
-	IntConfigItem cycle_time("cycle_time", 120);
+	ByteConfigItem led_scale("led_scale", 255);
+	ByteConfigItem seconds_scale("seconds_scale", 127);
+	IntConfigItem cycle_time("cycle_time", 132);
+	BooleanConfigItem sec_hue("sec_hue", false);
+	BooleanConfigItem sec_sat("sec_sat", false);
+	BooleanConfigItem sec_val("sec_val", false);
 
 	// Extra config values
+	BooleanConfigItem dimming("dimming", true);
 	ByteConfigItem show_date("show_date", 1);	// 1 = show date every minute
 	ByteConfigItem out_effect("out_effect", 1);	// 1 = slide display to the left
 	ByteConfigItem in_effect("in_effect", 1);	// 1 = slide display to the left
 	BooleanConfigItem display("display", true);	// true == clock
-	IntConfigItem test("test", 0);
 	ByteConfigItem test_speed("test_speed", 60);	// ticks per minute 0 to 60
-	IntConfigItem reset_time("reset_time", 2800);	// Length of reset pulse in uS
-	IntConfigItem set_time("set_time", 120);	// Length of set pulse in uS
 	BooleanConfigItem hv("hv", true);
+	ByteConfigItem voltage("voltage", 176);
 	ByteConfigItem mov_delay("mov_delay", 0);
 	ByteConfigItem mov_src("mov_src", 0);
+
+	// UPS config values
+	ByteConfigItem charge_rate("charge_rate", 0);	// 0 = Auto
+	BooleanConfigItem lpm("lpm", true);	// Low power mode - sleep when on battery
+	ByteConfigItem wakeup_time("wakeup_time", 25);	// How long to stay on during lpm
+	ByteConfigItem sensitivity("sensitivity", 40);	// Tap-detection sensitivity
 
 	// Sync config values
 	IntConfigItem sync_port("sync_port", 4920);
@@ -67,26 +75,37 @@
 		&hue,
 		&saturation,
 		&led_scale,
-		&underlight_scale,
+		&seconds_scale,
 		&backlight,
-		&underlight,
+		&seconds,
 		&hue_cycling,
+		&sec_hue,
+		&sec_sat,
+		&sec_val,
 		0
 	};
 
 	BaseConfigItem *extraSet[] = {
 		// Extra
+		&dimming,
 		&show_date,
 		&out_effect,
 		&in_effect,
 		&display,
-		&test,
 		&test_speed,
-		&reset_time,
-		&set_time,
 		&hv,
+		&voltage,
 		&mov_delay,
 		&mov_src,
+		0
+	};
+
+	BaseConfigItem *upsSet[] = {
+		// UPS
+		&charge_rate,
+		&lpm,
+		&wakeup_time,
+		&sensitivity,
 		0
 	};
 
@@ -100,16 +119,18 @@
 	CompositeConfigItem clockConfig("clock", 0, clockSet);
 	CompositeConfigItem ledConfig("leds", 0, ledSet);
 	CompositeConfigItem extraConfig("extra", 0, extraSet);
+	CompositeConfigItem upsConfig("ups", 0, upsSet);
 	CompositeConfigItem syncConfig("sync", 0, syncSet);
 
 	BaseConfigItem *configSet[] = {
 		&clockConfig,
 		&ledConfig,
 		&extraConfig,
+		&upsConfig,
 		&syncConfig,
 		0
 	};
 
-	CompositeConfigItem config("set1", 0, configSet);
+	CompositeConfigItem config("set4", 0, configSet);
 
-#endif /* LIBRARIES_CONFIGS_CONFIGSET1_H_ */
+#endif /* LIBRARIES_CONFIGS_CONFIGSET4_H_ */
