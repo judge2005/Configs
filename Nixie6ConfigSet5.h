@@ -28,6 +28,7 @@
 	BooleanConfigItem underlight("underlight", false);
 	BooleanConfigItem hue_cycling("hue_cycling", true);
 	ByteConfigItem led_scale("led_scale", 127);
+	ByteConfigItem underlight_scale("underlight_scale", 127);
 	IntConfigItem cycle_time("cycle_time", 120);
 	BooleanConfigItem sec_hue("sec_hue", false);
 	BooleanConfigItem sec_sat("sec_sat", false);
@@ -85,6 +86,7 @@
 		&hue,
 		&saturation,
 		&led_scale,
+		&underlight_scale,
 		&backlight,
 		&underlight,
 		&hue_cycling,
