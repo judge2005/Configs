@@ -43,6 +43,7 @@
 	ByteConfigItem test_speed("test_speed", 60);	// ticks per minute 0 to 60
 	BooleanConfigItem hv("hv", true);
 	ByteConfigItem voltage("voltage", 176);
+	ByteConfigItem warming("warming", 1);
 	ByteConfigItem mov_delay("mov_delay", 0);
 	ByteConfigItem mov_src("mov_src", 0);
 
@@ -106,6 +107,7 @@
 		&test_speed,
 		&hv,
 		&voltage,
+		&warming,
 		&mov_delay,
 		&mov_src,
 		0
