@@ -33,6 +33,7 @@
 	BooleanConfigItem sec_hue("sec_hue", false);
 	BooleanConfigItem sec_sat("sec_sat", false);
 	BooleanConfigItem sec_val("sec_val", false);
+	BooleanConfigItem brightness_gamma("b_gamma", true);
 
 	// Extra config values
 	BooleanConfigItem dimming("dimming", true);
@@ -94,6 +95,7 @@
 		&sec_hue,
 		&sec_sat,
 		&sec_val,
+		&brightness_gamma,
 		0
 	};
 
