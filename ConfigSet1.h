@@ -79,8 +79,8 @@
 		&led_scale,
 		&backlight,
 		&hue_cycling,
-		&sec_hue,
 		&sec_sat,
+		&sec_hue,
 		&sec_val,
 		0
 	};

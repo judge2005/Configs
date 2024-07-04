@@ -79,8 +79,8 @@
 		&backlight,
 		&seconds,
 		&hue_cycling,
-		&sec_hue,
 		&sec_sat,
+		&sec_hue,
 		&sec_val,
 		0
 	};

@@ -69,8 +69,8 @@
 		&led_scale,
 		&underlight_scale,
 		&backlight,
-		&underlight,
 		&hue_cycling,
+		&underlight,
 		0
 	};
 

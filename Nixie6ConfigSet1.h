@@ -92,8 +92,8 @@
 		&backlight,
 		&underlight,
 		&hue_cycling,
-		&sec_hue,
 		&sec_sat,
+		&sec_hue,
 		&sec_val,
 		&brightness_gamma,
 		0
